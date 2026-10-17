@@ -1,0 +1,115 @@
+<!--pages/index/index.wxml-->
+<view class="page">
+  <!-- 顶部 Hero 区 -->
+  <view class="hero">
+    <view class="hero-bg"></view>
+    <view class="hero-content">
+      <view class="hero-title">掐丝珐琅</view>
+      <view class="hero-subtitle">非遗纹样 · 一键生成</view>
+      <view class="hero-desc">传承景泰蓝千年技艺，让图片化作掐丝珐琅纹样</view>
+    </view>
+  </view>
+
+  <!-- 上传入口 -->
+  <view class="upload-section">
+    <view class="upload-card" bindtap="onTakePhoto">
+      <view class="upload-icon">📷</view>
+      <view class="upload-title">拍照上传</view>
+      <view class="upload-desc">拍摄手绘草图或实物</view>
+    </view>
+    <view class="upload-card" bindtap="onAlbumUpload">
+      <view class="upload-icon">🖼️</view>
+      <view class="upload-title">相册上传</view>
+      <view class="upload-desc">从相册选择图片</view>
+    </view>
+  </view>
+
+  <!-- 非遗科普 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title-gold">非遗文化</text>
+    </view>
+    <view class="card-enamel intro-card">
+      <view class="intro-text">
+        掐丝珐琅，又称<text class="highlight">景泰蓝</text>，是中国著名的传统手工艺品，国家级非物质文化遗产。
+      </view>
+      <view class="intro-text">
+        其制作工艺繁复，核心工序为"<text class="highlight">掐丝</text>"与"<text class="highlight">点蓝</text>"：
+      </view>
+      <view class="intro-steps">
+        <view class="step-item">
+          <view class="step-num">1</view>
+          <view class="step-text">掐丝：用铜丝弯折出图案轮廓</view>
+        </view>
+        <view class="step-item">
+          <view class="step-num">2</view>
+          <view class="step-text">点蓝：在封闭区域填入彩色釉料</view>
+        </view>
+        <view class="step-item">
+          <view class="step-num">3</view>
+          <view class="step-text">烧蓝：高温烧制使釉料固化</view>
+        </view>
+      </view>
+      <view class="intro-text">
+        本小程序通过 AI 图像处理，一键将您的图片转化为可用于手工制作的掐丝珐琅纹样。
+      </view>
+    </view>
+  </view>
+
+  <!-- 案例展示 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title-gold">纹样样例</text>
+    </view>
+    <scroll-view scroll-x class="cases-scroll" enhanced show-scrollbar="{{false}}">
+      <view class="cases-list">
+        <view
+          class="case-item"
+          wx:for="{{cases}}"
+          wx:key="id"
+          data-id="{{item.id}}"
+          bindtap="onViewCase"
+        >
+          <view class="case-preview" style="background: {{item.color}};">
+            <view class="case-pattern">
+              <view class="pattern-circle" style="border-color: rgba(255,255,255,0.6);"></view>
+              <view class="pattern-circle pattern-circle-2" style="border-color: rgba(255,255,255,0.4);"></view>
+            </view>
+          </view>
+          <view class="case-title">{{item.title}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 支持的图片类型 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title-gold">支持的图片类型</text>
+    </view>
+    <view class="type-grid">
+      <view class="type-item">
+        <view class="type-icon">✏️</view>
+        <view class="type-name">手绘草图</view>
+      </view>
+      <view class="type-item">
+        <view class="type-icon">🌸</view>
+        <view class="type-name">花卉</view>
+      </view>
+      <view class="type-item">
+        <view class="type-icon">🏺</view>
+        <view class="type-name">传统纹样</view>
+      </view>
+      <view class="type-item">
+        <view class="type-icon">👤</view>
+        <view class="type-name">人物剪影</view>
+      </view>
+      <view class="type-item">
+        <view class="type-icon">🔷</view>
+        <view class="type-name">几何图案</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer-space"></view>
+</view>

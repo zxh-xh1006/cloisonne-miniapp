@@ -1,0 +1,73 @@
+/* pages/favorites/favorites.wxss */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0d1b2a 0%, #1b263b 100%);
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+
+.empty-sub {
+  margin-top: 12rpx;
+  color: #6c7a89;
+  font-size: 26rpx;
+}
+
+.fav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.fav-item {
+  display: flex;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1rpx solid rgba(212, 175, 55, 0.2);
+  border-radius: 16rpx;
+  padding: 20rpx;
+  align-items: center;
+}
+
+.fav-thumb {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+  margin-right: 24rpx;
+  border: 1rpx solid rgba(212, 175, 55, 0.3);
+  flex-shrink: 0;
+}
+
+.fav-img {
+  width: 100%;
+  height: 100%;
+}
+
+.fav-info {
+  flex: 1;
+}
+
+.fav-time {
+  color: #a8b2c1;
+  font-size: 26rpx;
+  margin-bottom: 16rpx;
+}
+
+.fav-actions {
+  display: flex;
+  gap: 16rpx;
+}
+
+.fav-btn {
+  padding: 10rpx 28rpx;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1rpx solid rgba(212, 175, 55, 0.4);
+  border-radius: 24rpx;
+  color: #d4af37;
+  font-size: 24rpx;
+}
+
+.fav-btn-del {
+  background: rgba(192, 57, 43, 0.15);
+  border-color: rgba(192, 57, 43, 0.4);
+  color: #e74c3c;
+}

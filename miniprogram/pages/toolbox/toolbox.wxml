@@ -1,0 +1,110 @@
+<!--pages/toolbox/toolbox.wxml-->
+<view class="container">
+  <!-- 无结果时提示选择图片 -->
+  <view wx:if="{{!hasResult && !processing}}" class="empty-tip">
+    <view class="empty-icon">🎨</view>
+    <view class="empty-text">选择图片开始创作</view>
+    <button class="btn-gold" bindtap="onChooseImage">选择图片</button>
+  </view>
+
+  <!-- 处理中 -->
+  <view class="loading-enamel" wx:if="{{processing}}">
+    <view class="spinner"></view>
+    <view class="loading-text">{{progressText}}</view>
+  </view>
+
+  <!-- 结果与工具 -->
+  <view wx:if="{{hasResult && !processing}}">
+    <!-- 预览 -->
+    <view class="view-switcher">
+      <view class="view-tab {{viewMode === 'effect' ? 'active' : ''}}" data-mode="effect" bindtap="onSwitchView">效果图</view>
+      <view class="view-tab {{viewMode === 'lineart' ? 'active' : ''}}" data-mode="lineart" bindtap="onSwitchView">线稿</view>
+    </view>
+
+    <view class="preview-wrap">
+      <image wx:if="{{viewMode === 'effect'}}" src="{{effectUrl}}" class="preview-img" mode="aspectFit" />
+      <image wx:else src="{{lineArtUrl}}" class="preview-img" mode="aspectFit" />
+    </view>
+
+    <!-- 纹样微调 -->
+    <view class="tool-section">
+      <view class="tool-title">纹样微调</view>
+
+      <view class="slider-group">
+        <view class="slider-label">
+          <text>线条粗细</text>
+          <text class="slider-value">{{lineWidth}}px</text>
+        </view>
+        <slider
+          min="1" max="8" step="1" value="{{lineWidth}}"
+          bindchange="onLineWidthChange"
+          activeColor="#d4af37" backgroundColor="rgba(255,255,255,0.1)"
+          block-color="#f4d03f"
+        />
+      </view>
+
+      <view class="slider-group">
+        <view class="slider-label">
+          <text>色块数量</text>
+          <text class="slider-value">{{colorCount}} 色</text>
+        </view>
+        <slider
+          min="3" max="12" step="1" value="{{colorCount}}"
+          bindchange="onColorCountChange"
+          activeColor="#d4af37" backgroundColor="rgba(255,255,255,0.1)"
+          block-color="#f4d03f"
+        />
+      </view>
+    </view>
+
+    <!-- 配色面板 -->
+    <view class="tool-section">
+      <view class="tool-title">配色面板</view>
+
+      <view class="scheme-list">
+        <view
+          class="scheme-item {{colorScheme === index ? 'active' : ''}}"
+          wx:for="{{colorSchemes}}"
+          wx:key="name"
+          data-index="{{index}}"
+          bindtap="onApplyScheme"
+        >
+          <view class="scheme-colors">
+            <view class="scheme-color" wx:for="{{item.colors}}" wx:for-item="c" wx:key="*this" style="background: {{c}};"></view>
+          </view>
+          <view class="scheme-name">{{item.name}}</view>
+        </view>
+      </view>
+
+      <view class="custom-colors">
+        <view class="custom-title">自定义配色</view>
+        <view class="custom-color-list">
+          <view
+            class="custom-color"
+            wx:for="{{customColors}}"
+            wx:key="*this"
+            data-index="{{index}}"
+            bindtap="onPickColor"
+            style="background: {{item}};"
+          ></view>
+        </view>
+        <view class="custom-tip">点击色块可替换颜色</view>
+      </view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="action-group">
+      <button class="btn-gold" bindtap="onApplyParams">应用参数重新生成</button>
+    </view>
+    <view class="action-group action-group-row">
+      <button class="btn-outline" bindtap="onExportLineArt">导出线稿</button>
+      <button class="btn-outline" bindtap="onExportEffect">导出效果图</button>
+    </view>
+    <view class="action-group">
+      <button class="btn-outline" bindtap="onFavorite">⭐ 收藏纹样</button>
+    </view>
+    <view class="action-group">
+      <button class="btn-outline" bindtap="onChooseImage">换一张图片</button>
+    </view>
+  </view>
+</view>

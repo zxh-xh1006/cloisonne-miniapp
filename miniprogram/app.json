@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/process/process",
+    "pages/toolbox/toolbox",
+    "pages/favorites/favorites",
+    "pages/favorite-detail/favorite-detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0d1b2a",
+    "navigationBarTitleText": "掐丝珐琅纹样生成",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#0d1b2a"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#d4af37",
+    "backgroundColor": "#0d1b2a",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tab/home.png",
+        "selectedIconPath": "images/tab/home-active.png"
+      },
+      {
+        "pagePath": "pages/toolbox/toolbox",
+        "text": "工具箱",
+        "iconPath": "images/tab/toolbox.png",
+        "selectedIconPath": "images/tab/toolbox-active.png"
+      },
+      {
+        "pagePath": "pages/favorites/favorites",
+        "text": "收藏",
+        "iconPath": "images/tab/favorite.png",
+        "selectedIconPath": "images/tab/favorite-active.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.writePhotosAlbum": {
+      "desc": "用于保存生成的掐丝珐琅纹样到相册"
+    },
+    "scope.camera": {
+      "desc": "用于拍照生成掐丝珐琅纹样"
+    }
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

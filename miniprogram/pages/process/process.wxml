@@ -1,0 +1,71 @@
+<!--pages/process/process.wxml-->
+<view class="container">
+  <!-- Loading 状态 -->
+  <view class="loading-enamel" wx:if="{{loading}}">
+    <view class="spinner"></view>
+    <view class="loading-text">{{progressText}}</view>
+    <view class="loading-tip">AI 正在为您创作掐丝珐琅纹样...</view>
+  </view>
+
+  <!-- 结果展示 -->
+  <view wx:if="{{!loading && result}}">
+    <!-- 视图切换 -->
+    <view class="view-switcher">
+      <view
+        class="view-tab {{viewMode === 'effect' ? 'active' : ''}}"
+        data-mode="effect"
+        bindtap="onSwitchView"
+      >效果图版</view>
+      <view
+        class="view-tab {{viewMode === 'lineart' ? 'active' : ''}}"
+        data-mode="lineart"
+        bindtap="onSwitchView"
+      >线稿版</view>
+    </view>
+
+    <!-- 图片预览 -->
+    <view class="preview-wrap">
+      <image
+        wx:if="{{viewMode === 'effect'}}"
+        src="{{effectUrl}}"
+        class="preview-img"
+        mode="aspectFit"
+        show-menu-by-longpress
+      />
+      <image
+        wx:else
+        src="{{lineArtUrl}}"
+        class="preview-img"
+        mode="aspectFit"
+        show-menu-by-longpress
+      />
+      <view class="preview-label">{{viewMode === 'effect' ? '效果图（金属丝+釉料）' : '线稿（金属丝轮廓）'}}</view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="action-group">
+      <button class="btn-gold" bindtap="onExportEffect" wx:if="{{viewMode === 'effect'}}">
+        保存效果图到相册
+      </button>
+      <button class="btn-gold" bindtap="onExportLineArt" wx:else>
+        保存线稿到相册
+      </button>
+    </view>
+
+    <view class="action-group action-group-row">
+      <button class="btn-outline" bindtap="onExportLineArt">导出线稿</button>
+      <button class="btn-outline" bindtap="onExportEffect">导出效果图</button>
+    </view>
+
+    <view class="action-group action-group-row">
+      <button class="btn-outline" bindtap="onFavorite">⭐ 收藏</button>
+      <button class="btn-outline" bindtap="onGoToolbox">前往微调 →</button>
+    </view>
+  </view>
+
+  <!-- 无结果 -->
+  <view class="empty-state" wx:if="{{!loading && !result}}">
+    <view class="empty-icon">🎨</view>
+    <view>暂无生成结果</view>
+  </view>
+</view>

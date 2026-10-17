@@ -1,0 +1,161 @@
+/* app.wxss - 全局样式 - 掐丝珐琅主题 */
+
+/* 颜色变量 - 珐琅美学 */
+page {
+  /* 底色 - 深夜蓝 */
+  --bg-primary: #0d1b2a;
+  --bg-secondary: #1b263b;
+  --bg-card: #1b2838;
+  --bg-card-hover: #243447;
+
+  /* 金属色 - 金色铜色 */
+  --gold: #d4af37;
+  --gold-light: #f4d03f;
+  --gold-dark: #b8860b;
+  --copper: #b87333;
+  --silver: #c0c0c0;
+
+  /* 宝石色 - 珐琅釉料 */
+  --enamel-blue: #1a4b8c;      /* 宝蓝 */
+  --enamel-azure: #1e6091;     /* 石青 */
+  --enamel-red: #c0392b;       /* 朱红 */
+  --enamel-green: #27ae60;     /* 石绿 */
+  --enamel-yellow: #f1c40f;    /* 鹅黄 */
+  --enamel-purple: #8e44ad;    /* 紫晶 */
+  --enamel-white: #ecf0f1;     /* 月白 */
+
+  /* 文字色 */
+  --text-primary: #f0e6d2;
+  --text-secondary: #a8b2c1;
+  --text-muted: #6c7a89;
+
+  /* 边框 */
+  --border-gold: rgba(212, 175, 55, 0.4);
+  --border-light: rgba(255, 255, 255, 0.08);
+
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Helvetica, "Microsoft YaHei", sans-serif;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+/* 通用容器 */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+
+/* 金色标题 */
+.title-gold {
+  color: var(--gold);
+  font-weight: bold;
+  font-size: 40rpx;
+  letter-spacing: 2rpx;
+  text-shadow: 0 0 20rpx rgba(212, 175, 55, 0.3);
+}
+
+/* 珐琅卡片 */
+.card-enamel {
+  background: var(--bg-card);
+  border: 1rpx solid var(--border-gold);
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 24rpx rgba(0, 0, 0, 0.3);
+}
+
+/* 金色按钮 */
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%);
+  color: #1a1a1a;
+  font-weight: bold;
+  border: none;
+  border-radius: 48rpx;
+  padding: 24rpx 48rpx;
+  font-size: 32rpx;
+  letter-spacing: 2rpx;
+  box-shadow: 0 4rpx 16rpx rgba(212, 175, 55, 0.3);
+  text-align: center;
+}
+
+.btn-gold::after {
+  border: none;
+}
+
+/* 描边按钮 */
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 2rpx solid var(--gold);
+  border-radius: 48rpx;
+  padding: 22rpx 46rpx;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+.btn-outline::after {
+  border: none;
+}
+
+/* 宝石色标签 */
+.tag-gem {
+  display: inline-block;
+  padding: 8rpx 20rpx;
+  border-radius: 24rpx;
+  font-size: 24rpx;
+  margin-right: 12rpx;
+}
+
+/* 分割线 */
+.divider-gold {
+  height: 1rpx;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+  margin: 32rpx 0;
+}
+
+/* 加载动画 */
+.loading-enamel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 0;
+}
+
+.loading-enamel .spinner {
+  width: 80rpx;
+  height: 80rpx;
+  border: 6rpx solid var(--border-light);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-enamel .loading-text {
+  margin-top: 24rpx;
+  color: var(--text-secondary);
+  font-size: 28rpx;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 0;
+  color: var(--text-muted);
+}
+
+.empty-state .empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 24rpx;
+  opacity: 0.5;
+}

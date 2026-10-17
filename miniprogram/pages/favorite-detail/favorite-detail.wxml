@@ -1,0 +1,24 @@
+<!--pages/favorite-detail/favorite-detail.wxml-->
+<view class="container">
+  <view class="loading-enamel" wx:if="{{loading}}">
+    <view class="spinner"></view>
+    <view class="loading-text">加载中...</view>
+  </view>
+
+  <view wx:if="{{!loading}}">
+    <view class="view-switcher">
+      <view class="view-tab {{viewMode === 'effect' ? 'active' : ''}}" data-mode="effect" bindtap="onSwitchView">效果图</view>
+      <view class="view-tab {{viewMode === 'lineart' ? 'active' : ''}}" data-mode="lineart" bindtap="onSwitchView">线稿</view>
+    </view>
+
+    <view class="preview-wrap">
+      <image wx:if="{{viewMode === 'effect'}}" src="{{effectUrl}}" class="preview-img" mode="aspectFit" show-menu-by-longpress />
+      <image wx:else src="{{lineArtUrl}}" class="preview-img" mode="aspectFit" show-menu-by-longpress />
+    </view>
+
+    <view class="action-group action-group-row">
+      <button class="btn-outline" bindtap="onExportLineArt">导出线稿</button>
+      <button class="btn-outline" bindtap="onExportEffect">导出效果图</button>
+    </view>
+  </view>
+</view>

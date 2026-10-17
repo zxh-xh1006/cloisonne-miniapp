@@ -1,0 +1,28 @@
+<!--pages/favorites/favorites.wxml-->
+<view class="container">
+  <view class="loading-enamel" wx:if="{{loading}}">
+    <view class="spinner"></view>
+    <view class="loading-text">加载中...</view>
+  </view>
+
+  <view wx:if="{{!loading && empty}}" class="empty-state">
+    <view class="empty-icon">⭐</view>
+    <view>暂无收藏</view>
+    <view class="empty-sub">生成纹样后可在此收藏管理</view>
+  </view>
+
+  <view class="fav-list" wx:if="{{!loading && !empty}}">
+    <view class="fav-item" wx:for="{{list}}" wx:key="_id">
+      <view class="fav-thumb" data-id="{{item._id}}" bindtap="onViewDetail">
+        <image src="{{item.thumbUrl}}" mode="aspectFill" class="fav-img" />
+      </view>
+      <view class="fav-info">
+        <view class="fav-time">{{item.createTime}}</view>
+        <view class="fav-actions">
+          <view class="fav-btn" data-id="{{item._id}}" bindtap="onViewDetail">查看</view>
+          <view class="fav-btn fav-btn-del" data-id="{{item._id}}" catchtap="onDelete">删除</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
